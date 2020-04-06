@@ -37,5 +37,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    //Location Picker
     implementation 'com.google.android.gms:play-services-places:17.0.0'
+    //Layout
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    // Retrofit & OkHttp
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    // JSON Converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
 }
