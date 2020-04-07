@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MatchedUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -38,6 +40,12 @@ public class MatchedUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         ((VIHolder) holder).pickup_distance.setText(matchedUserModelList.get(position).getPickup_distance());
         ((VIHolder) holder).drop_distance.setText(matchedUserModelList.get(position).getDrop_distance());
         ((VIHolder) holder).rating.setText(matchedUserModelList.get(position).getRating());
+
+        Glide.with(activity)
+                .load(matchedUserModelList.get(position).getImageUri())
+                .centerCrop()
+                .placeholder(R.drawable.ic_user_default)
+                .into(((VIHolder) holder).userImage);
     }
 
     @Override

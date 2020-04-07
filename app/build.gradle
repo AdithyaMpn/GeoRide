@@ -45,4 +45,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
     // JSON Converter
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+    //For Fetching Image
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    //For Circular Image
+    implementation "androidx.cardview:cardview:1.0.0"
 }

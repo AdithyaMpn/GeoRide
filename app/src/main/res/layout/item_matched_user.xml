@@ -2,19 +2,40 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/userImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="30dp"
+    <RelativeLayout
+        android:id="@+id/borderLayout"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_user_default"
+        android:background="@drawable/circle_border"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            app:cardCornerRadius="30dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/userImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_user_default" />
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/userName"
@@ -22,23 +43,23 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        tools:text="Adithya"
-        android:textColor="@color/black"
         android:fontFamily="@font/roboto_bold"
-        app:layout_constraintStart_toEndOf="@+id/userImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/borderLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Adithya" />
 
     <TextView
         android:id="@+id/vehicleName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="6dp"
-        tools:text="Volkswagen Polo"
-        android:textColor="@color/lightGray"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/roboto_medium"
-        app:layout_constraintStart_toEndOf="@+id/userImage"
-        app:layout_constraintTop_toBottomOf="@+id/userName" />
+        android:textColor="@color/lightGray"
+        app:layout_constraintStart_toEndOf="@+id/borderLayout"
+        app:layout_constraintTop_toBottomOf="@+id/userName"
+        tools:text="Volkswagen Polo" />
 
 
     <TextView
@@ -47,31 +68,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        tools:text="45 Points"
         android:fontFamily="@font/roboto_bold"
         android:textColor="@color/green"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="45 Points" />
 
     <TextView
         android:id="@+id/time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="30dp"
         android:fontFamily="@font/roboto_medium"
         android:textColor="@color/lightGray"
-        tools:text="Today, 17.45"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        app:layout_constraintTop_toBottomOf="@+id/price"
+        tools:text="Today, 17.45" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_walkIcon"
         android:layout_width="10dp"
         android:layout_height="20dp"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vehicleName"
         app:srcCompat="@drawable/ic_walking" />
@@ -81,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/iv_walkIcon"
         app:layout_constraintTop_toBottomOf="@+id/vehicleName"
         tools:text="20m" />
@@ -91,9 +112,7 @@
         android:layout_width="30dp"
         android:layout_height="20dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/pickup_distance"
         app:layout_constraintTop_toBottomOf="@+id/vehicleName"
         app:srcCompat="@drawable/ic_startend" />
@@ -103,7 +122,7 @@
         android:layout_width="10dp"
         android:layout_height="20dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/iv_start_end"
         app:layout_constraintTop_toBottomOf="@+id/vehicleName"
         app:srcCompat="@drawable/ic_walking" />
@@ -113,7 +132,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/iv_walkIcon2"
         app:layout_constraintTop_toBottomOf="@+id/vehicleName"
         tools:text="100m" />
@@ -122,7 +141,7 @@
         android:id="@+id/iv_star"
         android:layout_width="15dp"
         android:layout_height="18dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/time"
@@ -132,11 +151,22 @@
         android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toStartOf="@+id/iv_star"
         app:layout_constraintTop_toBottomOf="@+id/time"
         tools:text="3.5" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#EAEAEA"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
