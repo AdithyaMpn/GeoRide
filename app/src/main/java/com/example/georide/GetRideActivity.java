@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,6 +20,7 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -39,6 +39,7 @@ public class GetRideActivity extends AppCompatActivity {
     private List<MatchedUserModel> matchedUserModelList;
     private MatchedUserAdapter matchedUserAdapter;
     private ProgressDialog progressDialog;
+    private Snackbar snackbarExitConfirmation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class GetRideActivity extends AppCompatActivity {
         tv_start_location = findViewById(R.id.tv_start_location);
         tv_end_location = findViewById(R.id.tv_end_location);
         matchedUserRecyclerView = findViewById(R.id.matcheduser_recyclerview);
-
+        snackbarExitConfirmation = Snackbar.make(getWindow().getDecorView().getRootView(), R.string.press_back_again, Snackbar.LENGTH_LONG);
 
         tv_start_location.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +125,17 @@ public class GetRideActivity extends AppCompatActivity {
                     if (response.isSuccessful() && response.body() != null) {
                         matchedUserModelList = response.body();
                         matchedUserRecyclerView.setVisibility(View.VISIBLE);
-                        matchedUserAdapter = new MatchedUserAdapter(GetRideActivity.this, matchedUserModelList);
+                        matchedUserAdapter = new MatchedUserAdapter(GetRideActivity.this, matchedUserModelList, new MatchedUserAdapter.MatchedUserReceiver() {
+                            @Override
+                            public void onClickDetailView(int position) {
+                                findViewById(R.id.matcheduser_recyclerview).setVisibility(View.GONE);
+                                TextView pickup_distance = findViewById(R.id.pickup_distance);
+                                pickup_distance.setText(matchedUserModelList.get(position).getPickup_distance());
+                                TextView drop_distance = findViewById(R.id.drop_distance);
+                                drop_distance.setText(matchedUserModelList.get(position).getDrop_distance());
+                                findViewById(R.id.route_distance_layout).setVisibility(View.VISIBLE);
+                            }
+                        });
                         matchedUserRecyclerView.setLayoutManager(new LinearLayoutManager(GetRideActivity.this));
                         matchedUserRecyclerView.setAdapter(matchedUserAdapter);
                         progressDialog.dismiss();
@@ -139,4 +150,22 @@ public class GetRideActivity extends AppCompatActivity {
             });
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (count == 0) {
+            if (snackbarExitConfirmation.isShown()) {
+                super.onBackPressed();
+            } else {
+                snackbarExitConfirmation.show();
+            }
+        } else {
+            getSupportFragmentManager().popBackStack();
+            findViewById(R.id.route_distance_layout).setVisibility(View.GONE);
+            findViewById(R.id.matcheduser_recyclerview).setVisibility(View.VISIBLE);
+        }
+    }
+
+
 }

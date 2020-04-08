@@ -49,4 +49,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     //For Circular Image
     implementation "androidx.cardview:cardview:1.0.0"
+    //For SnackBar Exit Confirmation
+    implementation 'com.google.android.material:material:1.1.0'
 }

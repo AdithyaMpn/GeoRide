@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/matcheduser_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map_fragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="@+id/matcheduser_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/borderLayout"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circle_border"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                app:cardCornerRadius="30dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/userImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_user_default" />
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/borderLayout"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Adithya" />
+
+        <TextView
+            android:id="@+id/vehicleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/lightGray"
+            app:layout_constraintStart_toEndOf="@+id/borderLayout"
+            app:layout_constraintTop_toBottomOf="@+id/userName"
+            tools:text="Volkswagen Polo" />
+
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="45 Points" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/lightGray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price"
+            tools:text="Today, 17.45" />
+
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleName"
+            tools:text="Distance:" />
+
+        <TextView
+            android:id="@+id/route_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/textview"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleName"
+            tools:text="12Km" />
+
+        <TextView
+            android:id="@+id/pointsperkm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            tools:text="4 Points/Km" />
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintEnd_toStartOf="@+id/pointsperkm"
+            app:layout_constraintTop_toBottomOf="@+id/time"
+            tools:text="Points:" />
+
+        <TextView
+            android:id="@+id/request_button"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/green_white_shade"
+            android:drawableEnd="@drawable/arrow"
+            android:drawablePadding="80dp"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:paddingStart="1dp"
+            android:paddingEnd="15dp"
+            android:text="@string/request_to_ride"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/route_distance" />
+
+        <TextView
+            android:id="@+id/cancel_button"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/gray"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="@color/lightGray"
+            app:layout_constraintStart_toEndOf="@+id/request_button"
+            app:layout_constraintTop_toBottomOf="@+id/route_distance" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

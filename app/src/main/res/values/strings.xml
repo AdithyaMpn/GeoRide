@@ -4,5 +4,8 @@
     <string name="enter_origin_location_hint">Enter Origin Location</string>
     <string name="enter_destination_location_hint">Enter Destination Location</string>
     <string name="get_ride_title">Get Ride</string>
+    <string name="press_back_again">Back Press again to exit</string>
+    <string name="request_to_ride">Request to Ride</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
