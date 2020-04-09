@@ -6,15 +6,49 @@ public class MatchedUserModel implements Serializable {
 
     private String userName,vehicleName,price,time,pickup_distance,drop_distance,rating,imageUri;
 
-    public String getUserName() {
+    private double startLatitude,startLongitude,endLatitude,endLongitude;
+
+    String getUserName() {
         return userName;
+    }
+
+    double getStartLatitude() {
+        return startLatitude;
+    }
+
+    public void setStartLatitude(double startLatitude) {
+        this.startLatitude = startLatitude;
+    }
+
+    double getStartLongitude() {
+        return startLongitude;
+    }
+
+    public void setStartLongitude(double startLongitude) {
+        this.startLongitude = startLongitude;
+    }
+
+    double getEndLatitude() {
+        return endLatitude;
+    }
+
+    public void setEndLatitude(double endLatitude) {
+        this.endLatitude = endLatitude;
+    }
+
+    double getEndLongitude() {
+        return endLongitude;
+    }
+
+    public void setEndLongitude(double endLongitude) {
+        this.endLongitude = endLongitude;
     }
 
     public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public String getVehicleName() {
+    String getVehicleName() {
         return vehicleName;
     }
 
@@ -22,7 +56,7 @@ public class MatchedUserModel implements Serializable {
         this.vehicleName = vehicleName;
     }
 
-    public String getPrice() {
+    String getPrice() {
         return price;
     }
 
@@ -30,7 +64,7 @@ public class MatchedUserModel implements Serializable {
         this.price = price;
     }
 
-    public String getTime() {
+    String getTime() {
         return time;
     }
 
@@ -38,7 +72,7 @@ public class MatchedUserModel implements Serializable {
         this.time = time;
     }
 
-    public String getPickup_distance() {
+    String getPickup_distance() {
         return pickup_distance;
     }
 
@@ -46,7 +80,7 @@ public class MatchedUserModel implements Serializable {
         this.pickup_distance = pickup_distance;
     }
 
-    public String getDrop_distance() {
+    String getDrop_distance() {
         return drop_distance;
     }
 
@@ -54,7 +88,7 @@ public class MatchedUserModel implements Serializable {
         this.drop_distance = drop_distance;
     }
 
-    public String getRating() {
+    String getRating() {
         return rating;
     }
 
@@ -62,7 +96,7 @@ public class MatchedUserModel implements Serializable {
         this.rating = rating;
     }
 
-    public String getImageUri() {
+    String getImageUri() {
         return imageUri;
     }
 
