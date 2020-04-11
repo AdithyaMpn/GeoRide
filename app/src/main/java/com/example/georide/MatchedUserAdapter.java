@@ -1,5 +1,6 @@
 package com.example.georide;
 
+import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -23,7 +23,7 @@ public class MatchedUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private List<MatchedUserModel> matchedUserModelList;
     private MatchedUserReceiver matchedUserReceiver;
 
-    MatchedUserAdapter(AppCompatActivity activity, List<MatchedUserModel> matchedUserModelList,MatchedUserReceiver matchedUserReceiver) {
+    MatchedUserAdapter(AppCompatActivity activity, List<MatchedUserModel> matchedUserModelList, MatchedUserReceiver matchedUserReceiver) {
         this.activity = activity;
         this.matchedUserModelList = matchedUserModelList;
         this.matchedUserReceiver = matchedUserReceiver;
@@ -38,10 +38,13 @@ public class MatchedUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
-        if(matchedUserModelList!=null) {
+        if (matchedUserModelList != null) {
             ((VIHolder) holder).userName.setText(matchedUserModelList.get(position).getUserName());
             ((VIHolder) holder).vehicleName.setText(matchedUserModelList.get(position).getVehicleName());
-            ((VIHolder) holder).price.setText(matchedUserModelList.get(position).getPrice());
+            float[] results = new float[1];
+            Location.distanceBetween(matchedUserModelList.get(position).getStartLatitude(), matchedUserModelList.get(position).getStartLongitude(),
+                    matchedUserModelList.get(position).getEndLatitude(), matchedUserModelList.get(position).getEndLongitude(), results);
+            ((VIHolder) holder).price.setText(String.format("%s %s", String.valueOf((int) (Integer.parseInt(matchedUserModelList.get(position).getPrice()) * (results[0] / 1000))), "Points"));
             ((VIHolder) holder).time.setText(matchedUserModelList.get(position).getTime());
             ((VIHolder) holder).pickup_distance.setText(matchedUserModelList.get(position).getPickup_distance());
             ((VIHolder) holder).drop_distance.setText(matchedUserModelList.get(position).getDrop_distance());
@@ -76,6 +79,10 @@ public class MatchedUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             return 0;
     }
 
+    public interface MatchedUserReceiver {
+        void onClickDetailView(int position);
+    }
+
     private class VIHolder extends RecyclerView.ViewHolder {
 
         ConstraintLayout matcheduser_item;
@@ -94,9 +101,5 @@ public class MatchedUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             drop_distance = itemLayoutView.findViewById(R.id.drop_distance);
             rating = itemLayoutView.findViewById(R.id.rating);
         }
-    }
-
-    public interface MatchedUserReceiver {
-        void onClickDetailView(int position);
     }
 }

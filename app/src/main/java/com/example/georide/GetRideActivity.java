@@ -110,15 +110,18 @@ public class GetRideActivity extends AppCompatActivity {
             Retrofit retrofit = new Retrofit.Builder().baseUrl("https://my-json-server.typicode.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-            GetApi jsonPathHolderApi = retrofit.create(GetApi.class);
+            GetApi pathHolderApi = retrofit.create(GetApi.class);
 
             progressDialog = new ProgressDialog(GetRideActivity.this);
+            progressDialog.setCancelable(false);
             progressDialog.show();
+            if(progressDialog.getWindow() != null)
             progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             progressDialog.setContentView(new ProgressBar(GetRideActivity.this));
             Toast.makeText(this, "Please wait..Fetching Matched Users", Toast.LENGTH_SHORT).show();
 
-            Call<List<MatchedUserModel>> response = jsonPathHolderApi.getMatchedUser();
+            //Api Call to get list of Matched Users Data
+            Call<List<MatchedUserModel>> response = pathHolderApi.getMatchedUser();
             response.enqueue(new retrofit2.Callback<List<MatchedUserModel>>() {
                 @Override
                 public void onResponse(@NonNull Call<List<MatchedUserModel>> call, @NonNull Response<List<MatchedUserModel>> response) {
