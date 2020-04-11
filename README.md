@@ -16,3 +16,7 @@ The Following task is done:
 
 >After Fetching Data using RecyclerView will populate each matched user data
 ![image](https://drive.google.com/uc?export=view&id=10ktEl_iOmCB5nH-OplC2TO5_yrrLy0Xa)
+
+>Using Direction API the routhpath polyline is drawn in mapfragment based on latlongs
+![image](https://drive.google.com/uc?export=view&id=10lcmeKTTvCOJGV03VXIlclcNPSyFREQH)
+
